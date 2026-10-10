@@ -1,5 +1,3 @@
-# MiniUI C++ — Build Your Own UI Framework
-
 A small C++17 proof-of-concept for Task 2. It demonstrates a component tree, a renderer, state updates, event/command handling, and a to-do/counter demo. It uses the terminal renderer option explicitly allowed by the task, so it needs no web server or third-party libraries.
 
 ## Build and run
