@@ -22,24 +22,26 @@ miniui::Node build_app(const AppState& state) {
     using miniui::Node;
 
     std::vector<Node> children;
-    children.push_back(h("title", {}, {{"value", "MiniUI C++ — Demo App"}}));
+    // Fixed: Passed attributes as the second argument
+    children.push_back(h("title", {{"value", "MiniUI C++ — Demo App"}}));
     children.push_back(text("A tiny component-tree UI framework rendered in the terminal."));
     children.push_back(h("spacer"));
 
     children.push_back(h("panel", {
-        h("title", {}, {{"value", "Counter"}}),
+        h("title", {{"value", "Counter"}}),
         text("Current value: " + std::to_string(state.counter)),
         text("Commands: +  increment | -  decrement | r  reset")
     }));
     children.push_back(h("spacer"));
 
     std::vector<Node> todo_nodes;
-    todo_nodes.push_back(h("title", {}, {{"value", "To-do list"}}));
+    todo_nodes.push_back(h("title", {{"value", "To-do list"}}));
     if (state.todos.empty()) {
         todo_nodes.push_back(text("No tasks yet. Use 'a' to add one."));
     } else {
         for (std::size_t i = 0; i < state.todos.size(); ++i) {
-            todo_nodes.push_back(h("item", {}, {
+            // Fixed: Passed item attributes as the second argument
+            todo_nodes.push_back(h("item", {
                 {"value", std::to_string(i + 1) + ". " + state.todos[i].title},
                 {"done", state.todos[i].done ? "true" : "false"}
             }));
